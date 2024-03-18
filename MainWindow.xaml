@@ -1,0 +1,35 @@
+﻿<Window x:Class="MsgBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MsgBox"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBox x:Name="MessageBoxTextBox" Margin="0 0 0 10"  />
+            <Button Content="Send Message" Click="SendMessageButton_Click" Width="100" Height="30"/>
+            <TextBox x:Name="SearchTextBox" Margin="0 10 0 0" Width="450" TextChanged="SearchTextBox_TextChanged"/>
+            <TextBlock Text="Search Messages" Foreground="Gray" Margin="5,0,0,0" VerticalAlignment="Center">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=SearchTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+
+            <Button Content="Delete Selected Message" Click="DeleteMessageButton_Click" Width="150" Height="30" Margin="0 10 0 0"/>
+            <ListBox x:Name="MessagesListBox" Margin="0 10 0 0" SelectionMode="Single"/>
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>
